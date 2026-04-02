@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 10px; }
+        .header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid #2563eb; padding-bottom: 20px; }
+        .order-info { margin-bottom: 30px; background-color: #f8fafc; padding: 15px; border-radius: 8px; }
+        .item-row { display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding: 10px 0; }
+        .totals { margin-top: 20px; text-align: right; }
+        .footer { margin-top: 40px; font-size: 12px; color: #777; text-align: center; border-top: 1px solid #eee; padding-top: 20px; }
+        .btn { display: inline-block; padding: 12px 30px; background-color: #2563eb; color: white !important; text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 style="color: #2563eb; margin: 0;">Order Confirmation</h1>
+            <p style="margin: 5px 0;">Thank you for your purchase from {{ order.business.name }}!</p>
+        </div>
+
+        <div class="order-info">
+            <h3 style="margin-top: 0;">Order #{{ order.id }}</h3>
+            <p><strong>Order Date:</strong> {{ order.created_at|date:"F j, Y, g:i a" }}</p>
+            <p><strong>Customer:</strong> {{ order.customer.username }}</p>
+            <p><strong>Delivery Address:</strong> {{ order.delivery_address }}</p>
+            <p><strong>Payment Method:</strong> {{ order.get_payment_method_display }}</p>
+        </div>
+
+        <h3>Order Summary</h3>
+        {% for item in order.items.all %}
+        <div class="item-row">
+            <div>
+                <strong>{{ item.product_name }}</strong><br>
+                <small>Quantity: {{ item.quantity }}</small>
+            </div>
+            <div>
+                GH₵{{ item.price }}
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="totals">
+            <p><strong>Subtotal:</strong> GH₵{{ order.subtotal }}</p>
+            <p><strong>Delivery Fee:</strong> GH₵{{ order.delivery_fee }}</p>
+            <p><strong>Tax (3%):</strong> GH₵{{ order.tax }}</p>
+            <h2 style="color: #2563eb;">Total: GH₵{{ order.total }}</h2>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="{{ frontend_url }}/order-tracking/{{ order.id }}" class="btn">Track Your Order</a>
+        </div>
+
+        <div class="footer">
+            <p>If you have any questions about your order, please contact us at support@ssmemarket.com</p>
+            <p>&copy; 2026 SSME Market. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

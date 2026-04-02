@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 10px; }
+        .header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid #22c55e; padding-bottom: 20px; }
+        .banner { background-color: #f0fdf4; border: 2px solid #22c55e; border-radius: 12px; padding: 30px; text-align: center; margin: 30px 0; }
+        .badge { display: inline-block; padding: 6px 16px; background-color: #22c55e; color: white; border-radius: 99px; font-weight: bold; text-transform: uppercase; }
+        .footer { margin-top: 40px; font-size: 12px; color: #777; text-align: center; border-top: 1px solid #eee; padding-top: 20px; }
+        .btn { display: inline-block; padding: 12px 30px; background-color: #22c55e; color: white !important; text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 style="color: #22c55e; margin: 0;">Welcome Aboard!</h1>
+            <p style="margin: 5px 0;">Your business has been approved on SSME Market.</p>
+        </div>
+
+        <div class="banner">
+            <div class="badge">Approved</div>
+            <h2 style="margin-top: 20px; color: #166534;">{{ business.name }} is Live!</h2>
+            <p style="color: #166534;">Congratulations! Customers can now see your products and services on the platform.</p>
+        </div>
+
+        <p>Hello {{ business.owner.username }},</p>
+        <p>Our administrators have reviewed your business application and we are happy to inform you that your listing is now **Approved**. You can now manage your inventory, track orders, and interact with customers.</p>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="{{ frontend_url }}/business-dashboard" class="btn">Go to Dashboard</a>
+        </div>
+
+        <p>Thank you for joining our community. We look forward to seeing your business grow!</p>
+
+        <div class="footer">
+            <p>&copy; 2026 SSME Market. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

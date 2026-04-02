@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 10px; }
+        .header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid #ef4444; padding-bottom: 20px; }
+        .banner { background-color: #fef2f2; border: 2px solid #ef4444; border-radius: 12px; padding: 30px; text-align: center; margin: 30px 0; }
+        .badge { display: inline-block; padding: 6px 16px; background-color: #ef4444; color: white; border-radius: 99px; font-weight: bold; text-transform: uppercase; }
+        .footer { margin-top: 40px; font-size: 12px; color: #777; text-align: center; border-top: 1px solid #eee; padding-top: 20px; }
+        .reason-box { background-color: #ffffff; border-radius: 8px; margin-top: 20px; padding: 15px; border-left: 4px solid #ef4444; text-align: left; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 style="color: #ef4444; margin: 0;">Application Status</h1>
+            <p style="margin: 5px 0;">An update on your business application for SSME Market.</p>
+        </div>
+
+        <div class="banner">
+            <div class="badge">Rejected</div>
+            <h2 style="margin-top: 20px; color: #991b1b;">{{ business.name }} - Rejection Info</h2>
+            <p style="color: #991b1b;">Unfortunately, your business application does not meet our current requirements.</p>
+        </div>
+
+        <p>Hello {{ business.owner.username }},</p>
+        <p>Thank you for your interest in SSME Market. Our administrators have finished reviewing your business application for **{{ business.name }}**. At this time, we have decided to decline your request for the following reason(s):</p>
+
+        <div class="reason-box">
+            <p style="margin: 0;"><strong>Reason:</strong> {{ business.rejection_reason }}</p>
+        </div>
+
+        <p style="margin-top: 30px;">You are welcome to update your business details and re-apply once you have addressed the feedback above. If you have any questions, please reply to this email.</p>
+
+        <div class="footer">
+            <p>&copy; 2026 SSME Market. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
